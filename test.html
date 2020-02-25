@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+<header>
+  <h1>Free-fall time calculator</h1>
+  <h2>How long would it take for a penny to fall from:</h2>
+</header>
+  <button onclick="answer_time(time_fall(0,1063,0), 'the Eiffel Tower')"> Eiffel Tower </button></p>
+  <button onclick="answer_time(time_fall(0,1454,0), 'the Empire State Building')"> Empire State Building </button></p>
+  </p>
+  <h2> Or, another height: </h2>
+  
+  <input type="text" placeholder="Miles" id="pMiles"><br>
+  
+  <input type="text" placeholder="Feet" id="pFeet"><br>
+  
+  <input type="text" placeholder="Inches" id="pInches"><br>
+  <button onclick="custom_height()"> Calculate </button></p>
+  </p> 
+  
+  <p id="response" > </p>
+  
+ <script>
+  "use strict";
+  
+  function custom_height() {
+	let m = document.getElementById("pMiles").value;
+	let f = document.getElementById("pFeet").value;
+	let i = document.getElementById("pInches").value;
+	answer_time(time_fall(m,f,i), "from that height");
+	document.getElementById("pMiles").value = "";
+	document.getElementById("pFeet").value = "";
+	document.getElementById("pInches").value = "";
+	}
+  
+  function time_fall(miles, feet, inches) {
+    let g = 32.18 ;
+    let d = ((miles * 5280) + +feet + +(inches / 12));
+    let time_fall_resp = Math.sqrt( ( 2 * d ) / g );
+    return time_fall_resp.toFixed(3) ;
+    }
+    
+  function answer_time(p_time, p_place) {
+    document.getElementById("response").innerHTML =
+    "It will take " + p_time + " seconds to hit the ground from " + p_place + "!";
+  }
+  
+  //let ft = prompt("Enter distance from Earth","<distance>");
+  //if (ft != null){
+</script>
+</body>
+</html>
